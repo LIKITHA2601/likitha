@@ -1,41 +1,52 @@
 Python 3.13.9 (tags/v3.13.9:8183fa5, Oct 14 2025, 14:09:13) [MSC v.1944 64 bit (AMD64)] on win32
 Enter "help" below or click "Help" above for more information.
->>> 
-=== RESTART: C:/Users/likit/AppData/Local/Programs/Python/Python313/mllab5.py ==
 
-A1: Linear Regression using ONE attribute (Ib → Va)
-Model Coefficient: [1.77146561e-05]
-Model Intercept: -0.005578777982388136
+=== RESTART: C:/Users/likit/AppData/Local/Programs/Python/Python313/MLLAB.py ===
 
-A2: Regression Error Metrics
-Training -> MSE: 0.08277819620163836 RMSE: 0.2877120021855855 R2: 0.0007346114717367014
-Testing  -> MSE: 0.08652731377621475 RMSE: 0.29415525454462776 R2: 0.0007875882665324685
+================ DATASET PREVIEW ================
 
-A3: Regression using MULTIPLE attributes
-Multi-feature Metrics -> MSE: 3.52692755353745e-19 RMSE: 5.938794114580375e-10 R2: 1.0
+   G  C  B  A          Ia          Ib          Ic        Va        Vb        Vc
+0  1  0  0  1 -151.291812   -9.677452   85.800162  0.400750 -0.132935 -0.267815
+1  1  0  0  1 -336.186183  -76.283262   18.328897  0.312732 -0.123633 -0.189099
+2  1  0  0  1 -502.891583 -174.648023  -80.924663  0.265728 -0.114301 -0.151428
+3  1  0  0  1 -593.941905 -217.703359 -124.891924  0.235511 -0.104940 -0.130570
+4  1  0  0  1 -643.663617 -224.159427 -132.282815  0.209537 -0.095554 -0.113983
 
-A4: K-Means Clustering (k=2)
-Cluster Centers:
- [[-4.82393821e+02  3.71313848e+02 -5.83720496e+01  1.49468189e-02
-   8.82288954e-02 -1.03175714e-01]
- [ 1.99059986e+02 -2.00314112e+02  6.90473622e+01 -1.61152007e-02
-  -3.13780706e-02  4.74932712e-02]]
-Cluster Labels (first 20):
- [1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0]
+Columns: ['G', 'C', 'B', 'A', 'Ia', 'Ib', 'Ic', 'Va', 'Vb', 'Vc']
 
-A5: Clustering Evaluation Scores
-Silhouette Score: 0.35277254053295176
-Calinski-Harabasz Score: 3248.70310166671
-Davies-Bouldin Index: 1.3084352278417541
+Target column used: Target
+Feature columns used: ['Ia', 'Ib', 'Ic', 'Va', 'Vb', 'Vc']
 
-A6: Distortion Values for Different k
-k = 2, Distortion = 3040082985.65458
-k = 3, Distortion = 2234869863.39781
-k = 4, Distortion = 1557617893.2333527
-k = 5, Distortion = 1068279180.8537674
-k = 6, Distortion = 852567886.0301543
-k = 7, Distortion = 704334543.7244878
-k = 8, Distortion = 612696069.5031933
-k = 9, Distortion = 557345653.4112847
+================ A1. ENTROPY ================
 
-A7: Elbow Method Graph
+Entropy of target = 0.8373330211666188
+
+================ A2. GINI INDEX ================
+
+Gini index of target = 0.39155391716469934
+
+================ A3. ROOT NODE USING INFORMATION GAIN ================
+
+Ia --> Information Gain = 0.002044202054474198
+Ib --> Information Gain = 0.10175100482348398
+Ic --> Information Gain = 0.18030252328894802
+Va --> Information Gain = 0.003874624572723251
+Vb --> Information Gain = 0.17410855549901183
+Vc --> Information Gain = 0.004366116176071744
+
+Root node = Ic
+
+================ A4. BINNING DONE ================
+
+Binning type used: equal_width
+      Ia     Ib     Ic     Va     Vb     Vc
+0  Bin_2  Bin_2  Bin_3  Bin_4  Bin_2  Bin_2
+1  Bin_2  Bin_2  Bin_3  Bin_4  Bin_2  Bin_2
+2  Bin_1  Bin_2  Bin_2  Bin_3  Bin_2  Bin_2
+3  Bin_1  Bin_2  Bin_2  Bin_3  Bin_2  Bin_2
+4  Bin_1  Bin_2  Bin_2  Bin_3  Bin_2  Bin_2
+
+================ A5. MY OWN DECISION TREE ================
+
+Constructed Tree:
+{'Ic': {'Bin_3': {'Vb': {'Bin_2': {'Va': {'Bin_4': {'Vc': {'Bin_2': 'G', 'Bin_1': 'G'}}, 'Bin_3': {'Ib': {'Bin_2': 'G', 'Bin_3': 'G', 'Bin_1': 'G', 'Bin_4': 'G'}}, 'Bin_1': 'C', 'Bin_2': 'C'}}, 'Bin_3': {'Ia': {'Bin_1': {'Ib': {'Bin_2': 'G', 'Bin_3': 'G', 'Bin_4': 'G'}}, 'Bin_2': 'G', 'Bin_3': 'C'}}, 'Bin_1': {'Ib': {'Bin_3': 'G', 'Bin_2': {'Vc': {'Bin_4': 'G', 'Bin_3': 'G', 'Bin_2': 'G'}}, 'Bin_4': 'G', 'Bin_1': 'C'}}}}, 'Bin_2': {'Vb': {'Bin_2': {'Ib': {'Bin_2': {'Ia': {'Bin_1': 'G', 'Bin_2': 'G', 'Bin_4': 'G', 'Bin_3': 'G'}}, 'Bin_3': {'Ia': {'Bin_4': 'G', 'Bin_2': 'G'}}, 'Bin_1': {'Va': {'Bin_2': 'G', 'Bin_3': 'G'}}, 'Bin_4': 'C'}}, 'Bin_3': {'Va': {'Bin_3': {'Ib': {'Bin_2': 'G', 'Bin_3': 'G', 'Bin_4': 'G'}}, 'Bin_2': 'G', 'Bin_1': 'G', 'Bin_4': {'Ib': {'Bin_3': 'C', 'Bin_2': 'G'}}}}, 'Bin_4': 'G', 'Bin_1': {'Ib': {'Bin_1': 'C', 'Bin_2': 'G', 'Bin_3': 'G'}}}}, 'Bin_4': {'Va': {'Bin_4': 'C', 'Bin_3': {'Ia': {'Bin_3': 'C', 'Bin_1': {'Vb': {'Bin_3': 'G', 'Bin_2': 'C'}}}}, 'Bin_2': {'Ia': {'Bin_3': {'Vb': {'Bin_3': 'C', 'Bin_2': 'C'}}, 'Bin_1': {'Ib': {'Bin_3': 'C', 'Bin_2': 'C'}}, 'Bin_2': 'C'}}, 'Bin_1': 'C'}}, 'Bin_1': {'Va': {'Bin_2': 'C', 'Bin_3': {'Ia': {'Bin_2': {'Vb': {'Bin_2': 'C', 'Bin_3': 'C'}}, 'Bin_4': 'C', 'Bin_3': 'C'}}, 'Bin_4': 'C'}}}}
